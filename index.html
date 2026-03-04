@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nossa História 💜</title>
+<link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- TELA 1 -->
+<section id="home" class="screen home">
+    <img src="imagens/Kuromi.webp" class="decor d1">
+    <img src="imagens/Hello Kitty.webp" class="decor d2">
+    <h1>Feliz Nosso Dia 💜</h1>
+    <button onclick="startExperience()">Começar</button>
+</section>
+
+<!-- TELA 2 -->
+<section id="timeline" class="screen timeline">
+    <h2 class="instruction">Clique no selo e revele nossa história</h2>
+
+    <div class="letter">
+        <div class="envelope">
+            <div class="body"></div>
+            <div class="flap"></div>
+            <div class="seal" onclick="openLetter(this)">💜</div>
+        </div>
+        <div class="letter-content">
+            <img src="imagens/Kuromi.png">
+            <p>Nosso primeiro momento especial...</p>
+        </div>
+    </div>
+    <div class="letter">
+        <div class="envelope">
+            <div class="body"></div>
+            <div class="flap"></div>
+            <div class="seal" onclick="openLetter(this)">💜</div>
+        </div>
+        <div class="letter-content">
+            <img src="imagens/Hello-Kitty.png">
+            <p>AAAAA</p>
+        </div>
+    </div>
+    <div class="letter">
+        <div class="envelope">
+            <div class="body"></div>
+            <div class="flap"></div>
+            <div class="seal" onclick="openLetter(this)">💜</div>
+        </div>
+        <div class="letter-content">
+            <img src="imagens/Kuromi.webp">
+            <p>Nosso primeiro momento especial...</p>
+        </div>
+    </div>
+    <div class="letter">
+        <div class="envelope">
+            <div class="body"></div>
+            <div class="flap"></div>
+            <div class="seal" onclick="openLetter(this)">💜</div>
+        </div>
+        <div class="letter-content">
+            <img src="imagens/foto1.jpg">
+            <p>Nosso primeiro momento especial...</p>
+        </div>
+    </div>
+
+    <button onclick="goTo('music')">Continuar</button>
+</section>
+
+<!-- TELA 3 -->
+<section id="music" class="screen music">
+
+    <div class="music-card">
+        <img src="imagens/zima.jpg" class="music-cover">
+
+        <h3>Reggae</h3>
+        <p contenteditable="true">Digite aqui o refrão...</p>
+
+        <iframe 
+            src="https://open.spotify.com/embed/track/2RG9i0m6y5HJ27gZvNSzOs"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+
+        <a href="https://open.spotify.com/track/2RG9i0m6y5HJ27gZvNSzOs" 
+           target="_blank" 
+           class="spotify-btn">
+           Ouvir no Spotify 🎧
+        </a>
+    </div>
+
+    <div class="music-card">
+        <img src="imagens/da lua.png" class="music-cover">
+
+        <h3>da lua</h3>
+        <p contenteditable="true">Digite aqui o refrão...</p>
+
+        <iframe 
+            src="https://open.spotify.com/embed/track/0F1FsfYvx7eyAC64EPzD7S"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+
+        <a href="https://open.spotify.com/track/0F1FsfYvx7eyAC64EPzD7S" 
+           target="_blank" 
+           class="spotify-btn">
+           Ouvir no Spotify 🎧
+        </a>
+    </div>
+
+    <div class="music-card">
+        <img src="imagens/camisa 10.jpg" class="music-cover">
+
+        <h3>Camisa 10</h3>
+        <p contenteditable="true">Digite aqui o refrão...</p>
+
+        <iframe 
+            src="https://open.spotify.com/embed/track/4gjjWs6nwNLpMRYMa4Z2DZ"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+
+        <a href="https://open.spotify.com/track/4gjjWs6nwNLpMRYMa4Z2DZ" 
+           target="_blank" 
+           class="spotify-btn">
+           Ouvir no Spotify 🎧
+        </a>
+    </div>
+
+    <button onclick="goTo('final')">Continuar</button>
+
+</section>
+
+<!-- TELA 4 -->
+<section id="final" class="screen final">
+    <canvas id="stars"></canvas>
+
+    <h2>Estamos juntos há exatos...</h2>
+
+    <div id="counter">
+        <div class="time-block">
+            <span class = "number" id="years"></span>
+            <small>anos</small>
+        </div>
+        <div class="time-block">
+            <span class = "number" id="months"></span>
+            <small>meses</small>
+        </div>
+        <div class="time-block">
+            <span class = "number" id="weeks"></span>
+            <small>semanas</small>
+        </div>
+        <div class="time-block">
+            <span class = "number" id="days"></span>
+            <small>dias</small>
+        </div>
+
+        <div class="time-block animated">
+            <div class="number-wrapper">
+                <span class="number" id="hours"></span>
+            </div>
+            <small>horas</small>
+        </div>
+
+        <div class="time-block animated">
+            <div class="number-wrapper">
+                <span class="number" id="minutes"></span>
+            </div>
+            <small>minutos</small>
+        </div>
+
+    <div class="time-block animated">
+    <div class="number-wrapper">
+        <span class="number" id="seconds"></span>
+    </div>
+    <small>segundos</small>
+    </div>
+    </div>
+
+    <p>Você aceita namorar comigo para sempre?</p>
+    <img src="imagens/Hello-Kitty.png" class="final-photo">
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
