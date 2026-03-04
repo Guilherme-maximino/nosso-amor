@@ -25,37 +25,121 @@ window.scrollTo(0, 0);
 
 /* Envelope */
 function openLetter(seal){
-const flap=seal.parentElement.querySelector(".flap");
-flap.style.transform="rotateX(180deg)";
+const flap = seal.parentElement.querySelector(".flap");
+flap.style.transform = "rotateX(180deg)";
+
 createParticles(seal);
-seal.style.display="none";
+seal.style.display = "none";
+
 setTimeout(()=>{
-seal.parentElement.parentElement.querySelector(".letter-content").style.display="block";
+    const content = seal.parentElement.parentElement.querySelector(".letter-content");
+    content.style.display = "flex";
+    content.style.animation = "fadeUp 1s ease forwards";
 },800);
 }
 
-function createParticles(element){
-for(let i=0;i<20;i++){
-const p=document.createElement("div");
-p.style.position="absolute";
-p.style.width="6px";
-p.style.height="6px";
-p.style.background="#fff";
-p.style.borderRadius="50%";
-p.style.left=(element.getBoundingClientRect().left)+"px";
-p.style.top=(element.getBoundingClientRect().top)+"px";
-p.style.pointerEvents="none";
-p.style.transition="1s ease";
-document.body.appendChild(p);
+function createParticles(seal){
 
-setTimeout(()=>{
-p.style.transform=`translate(${Math.random()*200-100}px,${Math.random()*200-100}px)`;
-p.style.opacity=0;
-},10);
+    const envelope = seal.parentElement;
+    const rect = seal.getBoundingClientRect();
+    const envelopeRect = envelope.getBoundingClientRect();
 
-setTimeout(()=>p.remove(),1000);
+    const flash = document.createElement("div");
+    flash.style.position = "absolute";
+    flash.style.width = "20px";
+    flash.style.height = "20px";
+    flash.style.borderRadius = "50%";
+    flash.style.background = "radial-gradient(circle, #fff 0%, #c77dff 40%, transparent 70%)";
+    flash.style.left = (rect.left - envelopeRect.left + rect.width/2 - 10) + "px";
+    flash.style.top = (rect.top - envelopeRect.top + rect.height/2 - 10) + "px";
+    flash.style.pointerEvents = "none";
+    flash.style.opacity = "1";
+    flash.style.transition = "all 0.4s ease";
+    envelope.appendChild(flash);
+
+    setTimeout(()=>{
+        flash.style.transform = "scale(4)";
+        flash.style.opacity = "0";
+    },10);
+
+    setTimeout(()=> flash.remove(),400);
+
+    for(let i = 0; i < 35; i++){
+
+        const p = document.createElement("div");
+
+        const size = Math.random()*6 + 4;
+
+        p.style.position = "absolute";
+        p.style.width = size + "px";
+        p.style.height = size + "px";
+        p.style.borderRadius = "50%";
+        p.style.pointerEvents = "none";
+
+        const colors = ["#ffffff", "#e0aaff", "#c77dff", "#9d4edd"];
+        p.style.background = colors[Math.floor(Math.random()*colors.length)];
+
+        p.style.boxShadow = `
+            0 0 6px ${p.style.background},
+            0 0 12px ${p.style.background}
+        `;
+
+        p.style.left = (rect.left - envelopeRect.left + rect.width/2) + "px";
+        p.style.top = (rect.top - envelopeRect.top + rect.height/2) + "px";
+
+        p.style.transition = "all 1s cubic-bezier(.17,.67,.83,.67)";
+        p.style.opacity = "1";
+
+        envelope.appendChild(p);
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 180 + 40;
+
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+
+        setTimeout(() => {
+            p.style.transform = `translate(${x}px, ${y}px) scale(0.3)`;
+            p.style.opacity = "0";
+        }, 10);
+
+        setTimeout(() => p.remove(), 1000);
+    }
 }
-}
+
+const modal = document.getElementById("photoModal");
+const modalImg = document.getElementById("modalImg");
+const modalCaption = document.getElementById("modalCaption");
+
+document.querySelectorAll(".polaroid").forEach(photo => {
+
+    photo.addEventListener("click", () => {
+
+        const img = photo.querySelector("img");
+        const caption = photo.querySelector(".caption");
+
+        modalImg.src = img.src;
+        modalCaption.textContent = caption.textContent;
+
+        modal.classList.add("active");
+
+    });
+
+});
+
+modal.addEventListener("click", () => {
+    modal.classList.remove("active");
+});
+
+document.querySelector(".photo-overlay").addEventListener("click", () => {
+
+    document.querySelectorAll(".polaroid").forEach(photo => {
+        photo.classList.remove("active");
+    });
+
+    document.querySelector(".photo-overlay").classList.remove("active");
+
+});
 
 /* Cronômetro exato */
 const startDate=new Date(2024,2,19,0,0,0);
@@ -134,35 +218,3 @@ if(lastSeconds !== seconds){
 
 setInterval(updateCounter,1000);
 updateCounter();
-
-/* Estrelas em órbita */
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let stars=[];
-for(let i=0;i<70;i++){
-stars.push({
-x:canvas.width/2,
-y:canvas.height/2,
-radius:Math.random()*250+50,
-angle:Math.random()*Math.PI*2,
-speed:0.001+Math.random()*0.002
-});
-}
-
-function animateStars(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-stars.forEach(s=>{
-s.angle+=s.speed;
-const x=s.x+Math.cos(s.angle)*s.radius;
-const y=s.y+Math.sin(s.angle)*s.radius;
-ctx.beginPath();
-ctx.arc(x,y,2,0,Math.PI*2);
-ctx.fillStyle="white";
-ctx.fill();
-});
-requestAnimationFrame(animateStars);
-}
-animateStars();
