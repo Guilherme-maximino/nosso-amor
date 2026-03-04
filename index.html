@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nossa História 💜</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css.css">
 </head>
 <body>
@@ -31,8 +32,9 @@
             <div class="seal" onclick="openLetter(this)">💜</div>
         </div>
         <div class="letter-content">
-            <img src="imagens/Kuromi.png">
-            <p>Nosso primeiro momento especial...</p>
+        <div class="polaroid">
+            <img src="imagens/us.jpg">
+            <div class="caption">Nosso primeiro momento especial...</div>
         </div>
     </div>
     <div class="letter">
@@ -42,8 +44,9 @@
             <div class="seal" onclick="openLetter(this)">💜</div>
         </div>
         <div class="letter-content">
-            <img src="imagens/Hello-Kitty.png">
-            <p>AAAAA</p>
+        <div class="polaroid">
+            <img src="imagens/Hello Kitty.webp">
+            <div class="caption">Nosso primeiro momento especial...</div>
         </div>
     </div>
     <div class="letter">
@@ -53,8 +56,9 @@
             <div class="seal" onclick="openLetter(this)">💜</div>
         </div>
         <div class="letter-content">
+        <div class="polaroid">
             <img src="imagens/Kuromi.webp">
-            <p>Nosso primeiro momento especial...</p>
+            <div class="caption">Nosso primeiro momento especial...</div>
         </div>
     </div>
     <div class="letter">
@@ -64,8 +68,9 @@
             <div class="seal" onclick="openLetter(this)">💜</div>
         </div>
         <div class="letter-content">
-            <img src="imagens/foto1.jpg">
-            <p>Nosso primeiro momento especial...</p>
+        <div class="polaroid">
+            <img src="imagens/Melody.webp">
+            <div class="caption">Nosso primeiro momento especial...</div>
         </div>
     </div>
 
@@ -77,9 +82,6 @@
 
     <div class="music-card">
         <img src="imagens/zima.jpg" class="music-cover">
-
-        <h3>Reggae</h3>
-        <p contenteditable="true">Digite aqui o refrão...</p>
 
         <iframe 
             src="https://open.spotify.com/embed/track/2RG9i0m6y5HJ27gZvNSzOs"
@@ -96,9 +98,6 @@
     <div class="music-card">
         <img src="imagens/da lua.png" class="music-cover">
 
-        <h3>da lua</h3>
-        <p contenteditable="true">Digite aqui o refrão...</p>
-
         <iframe 
             src="https://open.spotify.com/embed/track/0F1FsfYvx7eyAC64EPzD7S"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
@@ -113,9 +112,6 @@
 
     <div class="music-card">
         <img src="imagens/camisa 10.jpg" class="music-cover">
-
-        <h3>Camisa 10</h3>
-        <p contenteditable="true">Digite aqui o refrão...</p>
 
         <iframe 
             src="https://open.spotify.com/embed/track/4gjjWs6nwNLpMRYMa4Z2DZ"
@@ -135,7 +131,6 @@
 
 <!-- TELA 4 -->
 <section id="final" class="screen final">
-    <canvas id="stars"></canvas>
 
     <h2>Estamos juntos há exatos...</h2>
 
@@ -183,6 +178,14 @@
     <img src="imagens/Hello-Kitty.png" class="final-photo">
 </section>
 
+<div id="photoModal">
+    <div class="modal-content">
+        <img id="modalImg">
+        <p id="modalCaption"></p>
+    </div>
+</div>
+
+<div class="photo-overlay"></div>
 <script src="script.js"></script>
 </body>
 </html>
