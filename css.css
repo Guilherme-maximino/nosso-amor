@@ -485,6 +485,8 @@ font-weight: 700;
 color: #ffffff;
 line-height: 1.1;
 display:block;
+min-width:2ch;
+text-align:center;
 
 text-shadow:
 0 0 4px rgba(255,255,255,0.9),
