@@ -162,9 +162,10 @@ setTimeout(()=>el.classList.remove("glow"),800);
 }
 
 function updateStatic(id,value){
-const el=document.getElementById(id);
-if(el.innerText!=value){
-el.innerText=value;
+const el = document.getElementById(id);
+const displayValue = String(value).padStart(2,"0");
+if(el.innerText !== displayValue){
+el.innerText = displayValue;
 el.classList.add("glow");
 setTimeout(()=>el.classList.remove("glow"),800);
 }
