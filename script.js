@@ -7,149 +7,259 @@ goTo('timeline');
 }
 
 window.onload = function() {
-    document.getElementById("home").style.display = "flex";
+document.getElementById("home").style.display = "flex";
 };
 
-function goTo(screenId) {
-    // esconde todas
-document.querySelectorAll(".screen").forEach(screen => {
-    screen.style.display = "none";
+function goTo(screenId){
+
+document.querySelectorAll(".screen").forEach(screen=>{
+screen.style.display="none";
 });
 
-    // mostra apenas a escolhida
-document.getElementById(screenId).style.display = "flex";
+document.getElementById(screenId).style.display="flex";
 
-    // volta para o topo
-window.scrollTo(0, 0);
+window.scrollTo(0,0);
 }
+
+/* estrelas cadentes */
+
+function createShootingStar(){
+
+const star = document.createElement("div");
+star.className = "shooting-star";
+
+const home = document.querySelector(".home");
+
+const startX = Math.random() * window.innerWidth;
+const startY = Math.random() * (window.innerHeight / 2);
+
+star.style.left = startX + "px";
+star.style.top = startY + "px";
+
+home.appendChild(star);
+
+setTimeout(()=>{
+star.remove();
+},1500);
+
+}
+
+/* cria estrelas em intervalos aleatórios */
+
+setInterval(()=>{
+
+createShootingStar();
+
+if(Math.random() > 0.5){
+createShootingStar();
+}
+
+},1200);
 
 /* Envelope */
 function openLetter(seal){
-const flap = seal.parentElement.querySelector(".flap");
-flap.style.transform = "rotateX(180deg)";
+
+const flap=seal.parentElement.querySelector(".flap");
+flap.style.transform="rotateX(180deg)";
 
 createParticles(seal);
-seal.style.display = "none";
+seal.style.display="none";
 
 setTimeout(()=>{
-    const content = seal.parentElement.parentElement.querySelector(".letter-content");
-    content.style.display = "flex";
-    content.style.animation = "fadeUp 1s ease forwards";
+const content=seal.parentElement.parentElement.querySelector(".letter-content");
+content.style.display="flex";
+content.style.animation="fadeUp 1s ease forwards";
 },800);
+
 }
 
 function createParticles(seal){
 
-    const envelope = seal.parentElement;
-    const rect = seal.getBoundingClientRect();
-    const envelopeRect = envelope.getBoundingClientRect();
+const envelope=seal.parentElement;
+const rect=seal.getBoundingClientRect();
+const envelopeRect=envelope.getBoundingClientRect();
 
-    const flash = document.createElement("div");
-    flash.style.position = "absolute";
-    flash.style.width = "20px";
-    flash.style.height = "20px";
-    flash.style.borderRadius = "50%";
-    flash.style.background = "radial-gradient(circle, #fff 0%, #c77dff 40%, transparent 70%)";
-    flash.style.left = (rect.left - envelopeRect.left + rect.width/2 - 10) + "px";
-    flash.style.top = (rect.top - envelopeRect.top + rect.height/2 - 10) + "px";
-    flash.style.pointerEvents = "none";
-    flash.style.opacity = "1";
-    flash.style.transition = "all 0.4s ease";
-    envelope.appendChild(flash);
+const flash=document.createElement("div");
+flash.style.position="absolute";
+flash.style.width="20px";
+flash.style.height="20px";
+flash.style.borderRadius="50%";
+flash.style.background="radial-gradient(circle,#fff 0%,#c77dff 40%,transparent 70%)";
+flash.style.left=(rect.left-envelopeRect.left+rect.width/2-10)+"px";
+flash.style.top=(rect.top-envelopeRect.top+rect.height/2-10)+"px";
+flash.style.pointerEvents="none";
+flash.style.opacity="1";
+flash.style.transition="all 0.4s ease";
 
-    setTimeout(()=>{
-        flash.style.transform = "scale(4)";
-        flash.style.opacity = "0";
-    },10);
+envelope.appendChild(flash);
 
-    setTimeout(()=> flash.remove(),400);
+setTimeout(()=>{
+flash.style.transform="scale(4)";
+flash.style.opacity="0";
+},10);
 
-    for(let i = 0; i < 35; i++){
+setTimeout(()=>flash.remove(),400);
 
-        const p = document.createElement("div");
+for(let i=0;i<35;i++){
 
-        const size = Math.random()*6 + 4;
+const p=document.createElement("div");
+const size=Math.random()*6+4;
 
-        p.style.position = "absolute";
-        p.style.width = size + "px";
-        p.style.height = size + "px";
-        p.style.borderRadius = "50%";
-        p.style.pointerEvents = "none";
+p.style.position="absolute";
+p.style.width=size+"px";
+p.style.height=size+"px";
+p.style.borderRadius="50%";
+p.style.pointerEvents="none";
 
-        const colors = ["#ffffff", "#e0aaff", "#c77dff", "#9d4edd"];
-        p.style.background = colors[Math.floor(Math.random()*colors.length)];
+const colors=["#ffffff","#e0aaff","#c77dff","#9d4edd"];
+p.style.background=colors[Math.floor(Math.random()*colors.length)];
 
-        p.style.boxShadow = `
-            0 0 6px ${p.style.background},
-            0 0 12px ${p.style.background}
-        `;
+p.style.boxShadow=`
+0 0 6px ${p.style.background},
+0 0 12px ${p.style.background}
+`;
 
-        p.style.left = (rect.left - envelopeRect.left + rect.width/2) + "px";
-        p.style.top = (rect.top - envelopeRect.top + rect.height/2) + "px";
+p.style.left=(rect.left-envelopeRect.left+rect.width/2)+"px";
+p.style.top=(rect.top-envelopeRect.top+rect.height/2)+"px";
 
-        p.style.transition = "all 1s cubic-bezier(.17,.67,.83,.67)";
-        p.style.opacity = "1";
+p.style.transition="all 1s cubic-bezier(.17,.67,.83,.67)";
+p.style.opacity="1";
 
-        envelope.appendChild(p);
+envelope.appendChild(p);
 
-        const angle = Math.random() * Math.PI * 2;
-        const distance = Math.random() * 180 + 40;
+const angle=Math.random()*Math.PI*2;
+const distance=Math.random()*180+40;
 
-        const x = Math.cos(angle) * distance;
-        const y = Math.sin(angle) * distance;
+const x=Math.cos(angle)*distance;
+const y=Math.sin(angle)*distance;
 
-        setTimeout(() => {
-            p.style.transform = `translate(${x}px, ${y}px) scale(0.3)`;
-            p.style.opacity = "0";
-        }, 10);
+setTimeout(()=>{
+p.style.transform=`translate(${x}px,${y}px) scale(0.3)`;
+p.style.opacity="0";
+},10);
 
-        setTimeout(() => p.remove(), 1000);
-    }
+setTimeout(()=>p.remove(),1000);
+
 }
 
-const modal = document.getElementById("photoModal");
-const modalImg = document.getElementById("modalImg");
-const modalCaption = document.getElementById("modalCaption");
+}
 
-document.querySelectorAll(".polaroid").forEach(photo => {
+/* Lista de fotos */
 
-    photo.addEventListener("click", () => {
+const photos=[
 
-        const img = photo.querySelector("img");
-        const caption = photo.querySelector(".caption");
+{
+img:"imagens/us.jpg",
+caption:"O primeiro flerte 🤭"
+},
 
-        modalImg.src = img.src;
-        modalCaption.textContent = caption.textContent;
+{
+img:"imagens/foto1.webp",
+caption:"Uma de nossas primeiras fotos 📸"
+},
 
-        modal.classList.add("active");
+{
+img:"imagens/foto2.webp",
+caption:"Nosso primeiro mês juntos 💍"
+},
 
-    });
+{
+img:"imagens/foto3.webp",
+caption:"Nosso primeiro dia dos namorados 🌹"
+},
+
+{
+img:"imagens/foto4.webp",
+caption:"Ida na queima de fogos 🎆"
+},
+
+{
+img:"imagens/foto5.webp",
+caption:"Ida para a chácara juntos 🌞"
+},
+
+{
+img:"imagens/foto6.webp",
+caption:"Nosso primeiro natal 🎄"
+},
+
+{
+img:"imagens/foto7.webp",
+caption:"Completando 1 ano de namoro 💑"
+}
+
+];
+
+const container=document.getElementById("lettersContainer");
+
+photos.forEach(photo=>{
+
+const letter=document.createElement("div");
+letter.className="letter";
+
+letter.innerHTML=`
+
+<div class="envelope">
+<div class="body"></div>
+<div class="flap"></div>
+<div class="seal" onclick="openLetter(this)">💜</div>
+</div>
+
+<div class="letter-content">
+<div class="polaroid">
+<img src="${photo.img}">
+<div class="caption">${photo.caption}</div>
+</div>
+</div>
+
+`;
+
+container.appendChild(letter);
 
 });
 
+/* Modal de foto */
+
+const modal = document.getElementById("photoModal")
+const modalImg = document.getElementById("modalImg")
+const modalCaption = document.getElementById("modalCaption")
+
+// Abrir modal
+document.querySelectorAll(".polaroid").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        const img = card.querySelector("img")
+        const caption = card.querySelector(".caption")
+
+        modalImg.src = img.src
+        modalCaption.textContent = caption.textContent
+
+        modal.classList.add("active")
+    })
+
+})
+
+// Fechar modal clicando em QUALQUER lugar
 modal.addEventListener("click", () => {
-    modal.classList.remove("active");
-});
 
-document.querySelector(".photo-overlay").addEventListener("click", () => {
+    modal.classList.remove("active")
 
-    document.querySelectorAll(".polaroid").forEach(photo => {
-        photo.classList.remove("active");
-    });
-
-    document.querySelector(".photo-overlay").classList.remove("active");
-
-});
+})
 
 /* Cronômetro exato */
+
 const startDate=new Date(2024,2,19,0,0,0);
+
 let lastHours=null;
 let lastMinutes=null;
 let lastSeconds=null;
 
 function animateNumber(id,newValue){
+
 const el=document.getElementById(id);
-if(el.innerText==newValue)return;
+
+if(el.innerText==newValue) return;
 
 el.classList.add("slide-up");
 
@@ -157,21 +267,32 @@ setTimeout(()=>{
 el.innerText=newValue;
 el.classList.remove("slide-up");
 el.classList.add("glow");
+
 setTimeout(()=>el.classList.remove("glow"),800);
+
 },300);
+
 }
 
 function updateStatic(id,value){
-const el = document.getElementById(id);
-const displayValue = String(value).padStart(2,"0");
-if(el.innerText !== displayValue){
-el.innerText = displayValue;
+
+const el=document.getElementById(id);
+const displayValue=String(value).padStart(2,"0");
+
+if(el.innerText!==displayValue){
+
+el.innerText=displayValue;
+
 el.classList.add("glow");
+
 setTimeout(()=>el.classList.remove("glow"),800);
+
 }
+
 }
 
 function updateCounter(){
+
 const now=new Date();
 
 let years=now.getFullYear()-startDate.getFullYear();
@@ -179,22 +300,27 @@ let months=now.getMonth()-startDate.getMonth();
 let days=now.getDate()-startDate.getDate();
 
 if(days<0){
+
 months--;
+
 const prevMonth=new Date(now.getFullYear(),now.getMonth(),0);
 days+=prevMonth.getDate();
+
 }
 
 if(months<0){
+
 years--;
 months+=12;
+
 }
 
 const weeks=Math.floor(days/7);
 const remainingDays=days%7;
 
-const hours=now.getHours();
+const hours=String(now.getHours()).padStart(2,"0");
 const minutes=now.getMinutes();
-const seconds = now.getSeconds();
+const seconds=now.getSeconds();
 
 updateStatic("years",years);
 updateStatic("months",months);
@@ -202,19 +328,26 @@ updateStatic("weeks",weeks);
 updateStatic("days",remainingDays);
 
 if(lastHours!==hours){
+
 animateNumber("hours",hours);
 lastHours=hours;
+
 }
 
 if(lastMinutes!==minutes){
+
 animateNumber("minutes",minutes);
 lastMinutes=minutes;
+
 }
 
-if(lastSeconds !== seconds){
-    animateNumber("seconds", seconds);
-    lastSeconds = seconds;
+if(lastSeconds!==seconds){
+
+animateNumber("seconds",seconds);
+lastSeconds=seconds;
+
 }
+
 }
 
 setInterval(updateCounter,1000);
