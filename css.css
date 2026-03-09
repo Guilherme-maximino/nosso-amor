@@ -521,102 +521,120 @@ to{opacity:1; transform:translateY(0);}
 }
 
 /* TELA 3 */
-.music {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
+
+.music{
+display:none;
+flex-direction:column;
+align-items:center;
+gap:35px;
+padding:40px 20px;
 }
 
-.music-card {
-    position: relative;
-    border-radius: 20px;
-    padding: 25px;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    margin-bottom: 40px;
+.music-card{
+position:relative;
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+width:min(85vw,360px);
 
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.35);
+padding:22px;
+border-radius:20px;
 
-    overflow: hidden;
+text-align:center;
+
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+background:rgba(120,0,255,0.08);
+
+border:1px solid rgba(255,255,255,0.18);
+
+box-shadow:
+0 8px 32px rgba(0,0,0,0.35);
+
+overflow:hidden;
 }
 
-.music-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
+.music-card::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:20px;
 
-    background: rgba(120, 0, 255, 0.12);
+background:rgba(120,0,255,0.12);
 
-    border: 1px solid rgba(255,255,255,0.18);
-
-    z-index: 0;
+z-index:0;
 }
 
-.music-card > * {
-    position: relative;
-    z-index: 1;
+.music-card > *{
+position:relative;
+z-index:1;
 }
 
-.music-cover {
-    width: 100%;
-    border-radius: 15px;
-    margin-bottom: 15px;
+.music-cover{
+width:100%;
+border-radius:15px;
+margin-bottom:15px;
 }
 
-.music-card iframe {
-    width: 100%;
-    height: 80px;
-    border: none;
-    border-radius: 12px;
-    margin-top: 10px;
+.music-card iframe{
+width:100%;
+height:80px;
+border:none;
+border-radius:12px;
+margin-top:10px;
 }
 
-.spotify-btn {
-    position: relative;
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 28px;
+.spotify-btn{
+display:inline-block;
 
-    background: rgba(120, 0, 255, 0.12);
+margin-top:15px;
+padding:12px 26px;
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+background:rgba(120,0,255,0.12);
 
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
 
-    border: 1px solid rgba(180, 0, 255, 0.6);
+color:white;
+text-decoration:none;
 
-    box-shadow:
-        0 0 10px rgba(140, 0, 255, 0.4),
-        0 0 20px rgba(140, 0, 255, 0.2);
+border-radius:30px;
+font-weight:bold;
+letter-spacing:0.5px;
 
-    transition: all 0.3s ease;
+border:1px solid rgba(180,0,255,0.6);
+
+box-shadow:
+0 0 10px rgba(140,0,255,0.4),
+0 0 20px rgba(140,0,255,0.2);
+
+transition:all 0.3s ease;
 }
 
-.spotify-btn:hover {
-    transform: scale(1.07);
+.spotify-btn:hover{
+transform:scale(1.06);
 
-    box-shadow:
-        0 0 15px rgba(180, 0, 255, 0.8),
-        0 0 30px rgba(180, 0, 255, 0.5),
-        0 0 45px rgba(180, 0, 255, 0.3);
+box-shadow:
+0 0 15px rgba(180,0,255,0.8),
+0 0 30px rgba(180,0,255,0.5),
+0 0 45px rgba(180,0,255,0.3);
 
-    border: 1px solid rgba(200, 0, 255, 1);
+border:1px solid rgba(200,0,255,1);
 }
 
-.spotify-btn:hover {
-    transform: scale(1.05);
+@media (max-width:600px){
+
+.music-card{
+width:82vw;
+}
+
+}
+
+@media (max-width:420px){
+
+.music-card{
+width:78vw;
+}
+
 }
 /* TELA 4 */
 .final{
