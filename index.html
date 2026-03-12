@@ -10,10 +10,6 @@
 </head>
 <body>
 
-<audio id="bgMusic" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
 <!-- TELA 1 -->
 <section id="home" class="screen home">
 
@@ -31,7 +27,7 @@
             Cada segundo ao seu lado se torna uma memória eterna
         </p>
 
-        <button onclick="startExperience()">Começar</button>
+        <button class="nav-btn" onclick="startExperience()">Começar</button>
     </div>
 
 </section>
@@ -43,7 +39,7 @@
 
 <div class="letters-container" id="lettersContainer"></div>
 
-<button onclick="goTo('music')">Continuar</button>
+<button class="nav-btn" onclick="goTo('music')">Continuar</button>
 
 </section>
 
@@ -132,7 +128,7 @@
 
     </div>
 
-    <button onclick="goTo('timer')">Continuar</button>
+    <button class="nav-btn" onclick="goTo('timer')">Continuar</button>
 
 </section>
 
@@ -181,36 +177,43 @@
     </div>
     </div>
 
-    <button onclick="goTo('pedido')">Continuar</button>
+    <p class="pedido-text">
+        Após todo esse tempo, tenho uma pergunta para fazer...
+    </p>
+
+    <button class="nav-btn" onclick="goTo('pedido')">Continuar</button>
 
 </section>
 
 <!-- TELA 5 -->
 <section id="pedido" class="screen pedido">
 
-<h2 class="instruction">Nosso futuro começa agora 💜</h2>
+<h2 class="instruction">Nosso infinito futuro 💜</h2>
 
 <p class="pedido-text">
-Aqui você pode escrever o texto do pedido.  
-Pode ser algo como:  
-"Depois de tudo que vivemos... você aceita continuar escrevendo essa história comigo?"
+São dois anos aprendendo diariamente com você, em dois anos eu aprendi o que é amar e ser amado.
+Minha companheira na vida e melhor amiga, eu realizo todos seus sonhos sem medir esforços só para te ver feliz.
+</p>
+
+<p class="pedido-text">
+Uma história de amor tão intensa e cheio de altos e baixos, mas sem nunca deixar o outro na mão.
+Não existe um Guilherme sem sua Bianca, sem seu abraço, sem sua risada e sem seu olhar cheio de luz.
+</p>
+
+<p class="pedido-text">
+Minha vida se enche de cor e brilho ao ter você ao meu lado.
+E tenho certeza que nosso amor e história irão continuar por muito e muito tempo. Assim como o universo, vasto e sem fim.
+</p>
+
+<p class="pedido-text">
+Você aceita ficar comigo para todo o sempre?
 </p>
 
 <div class="pedido-photos">
 
 <div class="polaroid">
-<img src="imagens/foto1.webp">
-<div class="caption">Um momento especial</div>
-</div>
-
-<div class="polaroid">
-<img src="imagens/foto2.webp">
-<div class="caption">Outro momento</div>
-</div>
-
-<div class="polaroid">
-<img src="imagens/foto3.webp">
-<div class="caption">Nossa história</div>
+<img src="imagens/foto8.webp">
+<div class="caption">Para sempre Fiel 🦅</div>
 </div>
 
 </div>
