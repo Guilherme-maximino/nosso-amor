@@ -1,8 +1,4 @@
-/* Música */
 function startExperience(){
-const music=document.getElementById("bgMusic");
-music.volume=0.3;
-music.play();
 goTo('timeline');
 }
 
